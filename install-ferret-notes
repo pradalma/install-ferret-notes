@@ -79,7 +79,8 @@ Lastly you need to add the required paths to your bash path profile by running t
 source /usr/local/ferret_paths
 1
 	
-source /usr/local/ferret_paths
+source /usr/local/ferret_paths  (in tcsh or csh)
+or in .bashrc add source /usr/local/ferret_paths.sh
 
 at the command line where /usr/local was the location selected above for the path files. You should now be able to run Ferret with the ferret command. Success should equal something like:
 NOAA/PMEL TMAP
