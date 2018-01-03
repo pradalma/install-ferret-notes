@@ -2,6 +2,12 @@
 
 for unix systems
 
+Hi Niklas
+
+Ferret is now up and running. I did not pay close enough attention so I missed that for bash, one has to source in bashrc the /usr/local/ferret_path.sh not the /usr/local/ferret_paths file, even if it has been modified to have the export commands instead of the setenv.
+
+Just thought I would share this detail of the install and customization of the paths...
+
 Installing Ferret (NOAA) onto Ubuntu
 
 Ferret is an application produced by the NOAA .  It is an interactive computer visualization and analysis environment used by Geographers and the like. This is how I installed it onto Ubuntu 10+ and my notes from following their install guide.
