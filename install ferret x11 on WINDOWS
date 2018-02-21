@@ -100,3 +100,6 @@ Install x11-apps
 sudo apt-get install x11-apps
 Run xeyes
 A new window will open, containing a pair of eyes that will follow your mouse movements.
+
+
+TO INSTALL FERET: proceed following the notes provided for the install on unix, BUT, type this in the end: sudo apt-get install curl libcurl3
