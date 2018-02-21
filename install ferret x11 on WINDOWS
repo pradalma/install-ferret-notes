@@ -1,0 +1,102 @@
+How to run graphical Linux applications on Bash on Ubuntu on Windows 10
+June 11, 2017 by Sean Whalen
+Bash on Ubuntu on Windows was introduced by Microsoft in the Windows 10 Anniversary Update. It allows users to run a full Ubuntu user space in Windows. It is a much nicer approach for most applications than Cygwin, or using a Linux VM. It is not an emulator either. Think of it as GNU/Linux/Windows (apologies to Richard Stallman). This guide starts off with Microsoft’s instructions for installing Bash on Ubuntu on Windows, and then goes a few steps further by describing how to run graphical Linux applications.
+
+
+Before proceeding any further, note this warning from Microsoft:
+
+Important note
+This is the first release of Bash on Windows and it is branded “beta” deliberately – it’s not yet complete! You should expect many things to work and for some things to fail! We greatly appreciate you using Bash on Windows and helping us identify the issues we need to fix in order to deliver a great experience.
+
+Prerequisites
+Your PC must be running (at a minimum) a 64-bit version of Windows 10 with the Anniversary Update. The Creator’s Update is recommended.
+
+To find your PC’s CPU architecture and Windows version/build number, open Settings>System>About. Look for the System Type and Version fields respectively, as shown in the screenshot below.
+
+Acreenshot of the About section of the Windows 10 Settings app
+
+If your build is below 14393, try checking for updates.
+
+In order to run Bash on Windows, you will need to manually:
+
+Turn on Developer Mode
+Enable the “Windows Subsystem for Linux (beta)” feature via the GUI or the command-line
+Turn on Developer Mode
+Open Settings -> Update and Security -> For developers
+Select the Developer Mode radio button
+A screenshot of developer settings in Windows 10
+Enable the Windows Subsystem for Linux feature
+You can enable the feature using a GUI or command-line interface.
+
+GUI Method
+From the Start Menu, search for “Turn Windows features on or off” (type ‘turn’)
+Select Windows Subsystem for Linux (beta)
+The Windows features dialog box in Windows 10
+Click OK
+Command-line Method
+Open a PowerShell prompt as administrator and run:
+
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+After enabling Windows Subsystem for Linux
+Restart your computer when prompted.
+
+It is important that you DO restart when prompted as some of the infrastructure which Bash on Windows requires can only be loaded during Windows’ boot-up sequence.
+
+Install Bash on Ubuntu on Windows
+Open a command prompt as your normal user
+Run bash
+A screenshot of the Ubuntu license prompt
+After you have accepted the license, the Ubuntu user mode image will be downloaded, and a “Bash on Ubuntu on Windows” shortcut will be added to your Start Menu.
+
+To launch Bash on Ubuntu Windows, either run bash at a cmd/PowerShell command prompt, or use the Start Menu shortcut.
+
+After installation your Linux distribution will be located at: %localappdata%\lxss\ This directory is marked as a hidden system folder for a very good reason:
+
+Avoid creating and/or modifying files in this location using Windows tools and apps! If you do, it is likely that your Linux files will be corrupted and data loss may occur. Please read this blog post for more information.
+
+Create a UNIX user
+The first time you install Bash on Ubuntu on Windows, you will be prompted to create a UNIX username and password.
+
+A screenshot of a new UNIX user being created for Bash on Ubuntu on Windows
+
+This UNIX username and password has no relationship to your Windows username and password, and it can be different. 
+
+Use the same username that you use on remote Linux/UNIX systems, so you won’t need to specify it in individual configuration files, or every time you run commands like ssh. Read more.
+
+Updating Ubuntu
+After you have set up your user, update Ubuntu.
+
+You can update the installed packages just like any other Ubuntu installation:
+
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get autoremove -y
+Graphical Applications
+In order to run Linux GUI applications on Bash On Ubuntu on Windows, you must:
+
+Install a X server for Windows
+Configure bash to tell GUIs to use the local X server
+Install VcXsrv
+In order to run graphical Linux applications, you’ll need an X server.
+
+VcXsrv is the only fully open source and up-do-date native X server for windows.
+
+Download and run the latest installer
+Locate the VcXsrv shortcut in the Start Menu
+Right click on it
+Select More>Open file location
+Copy the VcXsrv shortcut file
+Paste the shortcut in %appdata%\Microsoft\Windows\Start Menu\Programs\Startup
+Launch VcXsrv for the first time
+You may receive a prompt to allow it through your firewall. Cancel/deny this request! Otherwise, other computers on your network could access the server.
+
+A X icon will appear in your system tray.
+
+Configure bash to use the local X server
+In bash run:
+echo "export DISPLAY=localhost:0.0" >> ~/.bashrc
+To have the configuration changes take effect, restart bash, or run:
+. ~/.bashrc
+Test a graphical application
+Install x11-apps
+sudo apt-get install x11-apps
+Run xeyes
+A new window will open, containing a pair of eyes that will follow your mouse movements.
