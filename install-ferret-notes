@@ -84,6 +84,9 @@ FOLLOW THESE INSTRUCTIONS!!!
 
 source /usr/local/ferret_paths  (in tcsh or csh)
 or in .bashrc add source /usr/local/ferret_paths.sh
+
+---------------------------
+then apt-get install libcurl3
 ----------------------------
 
 at the command line where /usr/local was the location selected above for the path files. You should now be able to run Ferret with
