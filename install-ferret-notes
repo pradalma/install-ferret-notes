@@ -86,7 +86,8 @@ source /usr/local/ferret_paths  (in tcsh or csh)
 or in .bashrc add source /usr/local/ferret_paths.sh
 ----------------------------
 
-at the command line where /usr/local was the location selected above for the path files. You should now be able to run Ferret with the ferret command. Success should equal something like:
+at the command line where /usr/local was the location selected above for the path files. You should now be able to run Ferret with
+the ferret command. Success should equal something like:
 NOAA/PMEL TMAP
 FERRET v6.71
 Linux 2.6.32-131.6.1.el6.x86_64 32-bit - 08/08/11
